@@ -31,4 +31,27 @@ void unionByRank(int u , int v){
     rank[p2]++;
   }  
 }
+
+void unionBySize(int u,int v){
+  int p1 = find_parent(u);
+  int p2 = find_parent(v);
+  if(p1 == p2) return;
+  if(size[p1] < size[p2]){
+     parent[p1] = p2;
+     size[p2] += size[p1];
+  }
+ else{
+    parent[p2] = p1;
+  size[p1] += size[p2];
+ }
+}
 };
+
+
+
+
+
+
+
+
+
