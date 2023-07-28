@@ -18,7 +18,7 @@ int find_parent(int node){
 }
 
 void unionByRank(int u , int v){
-     int p1 = find_parent(u)
+     int p1 = find_parent(u);
      int p2 = find_parent(v);
     if(rank[p1] < rank[p2]){
        parent[p1] = p2;
