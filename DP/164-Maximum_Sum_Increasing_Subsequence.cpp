@@ -37,3 +37,25 @@ int maxIncreasingDumbbellsSum(vector<int> &rack, int n)
 	vector<vector<int>> dp(n , vector<int>(n+1 , -1));
 	return solve(0 ,-1, rack ,  n , dp);
 }
+
+/*********************************************************************/
+//Tabulation Code
+
+int maxIncreasingDumbbellsSum(vector<int> &rack, int n)
+{    
+	vector<vector<int>> dp(n+1 , vector<int>(n+1 , 0));
+	 for(int idx = n-1; idx>=0; idx--){
+		  for(int prev = n; prev >=-1; prev--){
+	   int nottake = 0 + dp[idx+1][prev+1];
+	  int take = 0;
+	  if(prev == -1 or rack[idx] > rack[prev]){
+		   take = rack[idx] + dp[idx+1][idx+1];
+	  }
+	  dp[idx][prev+1] =  max(take , nottake); 
+		  }
+	 }
+     return dp[0][0];
+}
+
+
+
