@@ -1,7 +1,7 @@
 #include <bits/stdc++.h> 
 
 //Using Inbuilt NextPermutation function------------------------
-//T.C: O(N)       //Number of Elements
+//T.C: O(N!*N)       //Number of Elements
 //S.C: O(1)
 vector<int> nextPermutation(vector<int> &permutation, int n)
 {
@@ -19,7 +19,7 @@ return ans;
 //S.C: O(1)
 void nextPermutation(vector<int>& nums) {
         int n= nums.size();
-        int i ,j;
+        int i  ,j;
         for(i=n-2; i>=0; i--){
             if(nums[i] < nums[i+1]){
                 break;
@@ -27,6 +27,7 @@ void nextPermutation(vector<int>& nums) {
         }
         if(i<0){
             reverse(nums.begin() ,nums.end());
+            return;
         }
         else{
             for(j=n-1; j>i; j--){
