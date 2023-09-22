@@ -3,7 +3,7 @@
  T.C:    O(N*logN) + O(N), where N = the size of the given array.
 Reason: Sorting the given array takes  O(N*logN) time complexity. Now, after that, we are just using a single loop 
 that runs for N times. So, the time complexity will be O(N).
-S.C:O(N) 
+S.C:O(N*N) 
 */
 vector<vector<int>> mergeIntervals(vector<vector<int>> &intervals)
 {
