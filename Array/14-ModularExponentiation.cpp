@@ -1,9 +1,14 @@
 
 //brute Force Approach
+//T.C:O(N) , S.C:O(1)
 #include <bits/stdc++.h>
 
 int modularExponentiation(int x, int n, int m) {
 	int ans = 1;
+	if(n < 0){
+          n = -n;
+          x = 1/x;		
+	}
 	for(int i=0; i<n; i++){
 		ans = (1LL * ans*x)%m;
 	}
