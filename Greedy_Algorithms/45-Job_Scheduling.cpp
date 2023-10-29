@@ -124,3 +124,88 @@ int main() {
 
    return 0;
 } 
+
+
+//Simple Approach with Code 
+//T.C: O(N*logN)
+//S.C: O(N)
+
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+class Solution
+{
+    public:
+    //Function to find the maximum number of meetings that can
+    //be performed in a meeting room.
+    
+   static  bool comp(pair<int , int> &a , pair<int , int> &b){
+           return a.second < b.second;
+     }
+    
+    int maxMeetings(int start[], int end[], int n)
+    {
+         
+         vector<pair<int , int>> v(n);
+         
+         for(int i=0; i<n;i++){
+               v[i].first = start[i];
+               v[i].second = end[i];
+         }
+         
+         sort(v.begin() , v.end() , comp);
+         
+//   std::sort(v.begin(), v.end(), [](auto &left, auto &right) {
+//     return left.second < right.second;
+// });
+         
+        //  for(int i=0; i<n;i++){
+        //       cout<<v[i].first<<" "<<v[i].second<<endl;
+        //  }
+          int cnt = 0;
+          int j = 0;
+        for(int i=1;i<n;i++){
+             if(v[i].first > v[j].second){
+                 cnt++;
+                  j=i;   
+             }
+             
+        }
+         
+         return cnt+1;
+        
+    }
+};
+
+//{ Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        cin >> n;
+        int start[n], end[n];
+        for (int i = 0; i < n; i++) cin >> start[i];
+
+        for (int i = 0; i < n; i++) cin >> end[i];
+
+        Solution ob;
+        int ans = ob.maxMeetings(start, end, n);
+        cout << ans << endl;
+    }
+    return 0;
+}
+// } Driver Code Ends
+
+
+
+
+
+
+
+
+
+
+
