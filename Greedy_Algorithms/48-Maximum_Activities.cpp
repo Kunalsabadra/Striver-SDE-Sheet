@@ -24,3 +24,49 @@ int maximumActivities(vector<int> &start, vector<int> &finish) {
     }
     return maxActivity;
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------
+//Maximum number of meetings in room my simple code
+class Solution
+{
+    public:
+  
+bool static comp(pair<int , int> &a , pair<int , int> &b){
+           return a.second < b.second;
+     }
+    
+
+int maxMeetings(int start[], int end[], int n)
+    {
+         vector<pair<int , int>> v(n);
+          
+          for(int i=0; i<n;i++){
+               v[i].first = start[i];
+                v[i].second = end[i];
+          }
+          
+          sort(v.begin() , v.end(), comp);
+          
+          
+          int cnt  = 1;
+          int j=0;
+          for(int i=1; i<n;i++){
+               if(v[j].second < v[i].first){
+                  j=i;  
+               cnt++;
+               }
+          }
+         return cnt;
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
