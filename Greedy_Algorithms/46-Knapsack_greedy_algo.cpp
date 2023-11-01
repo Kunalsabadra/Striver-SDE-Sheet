@@ -50,3 +50,73 @@ double maximumValue (vector<pair<int, int>>& items, int n, int w)
           
           return ans;
 }
+
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//My Own Easy and Understandable Code
+
+
+struct Item{
+    int value;
+    int weight;
+};
+
+
+class Solution
+{
+    public:
+    //Function to get the maximum total value in the knapsack.
+    
+     
+     bool static comp(pair<double , int> &a , pair<double , int> &b){
+           return a.first > b.first;
+     }
+    
+    double fractionalKnapsack(int W, Item arr[], int n)
+    {
+          vector<pair<double , int>> per(n);
+          for(int i=0; i<n;i++){
+                per[i].first = (double)(arr[i].value) / (double)(arr[i].weight);
+                per[i].second   =  arr[i].weight; 
+          }
+          
+          sort(per.begin() , per.end() , comp);
+           double ans;
+          for(auto it:per){
+                // cout<<it.first<<" "<<it.second<<endl;
+                if(it.second <=W){
+                      ans += it.first * (it.second);
+                    //   cout<<ans<<" ";
+                      W -= it.second;
+                }
+                else if(W == 0) break;
+                else{
+                     ans += it.first*(double)(W);
+                    //  cout<<ans<<" ";
+                     W -= W; 
+                }
+          }
+        
+             
+          
+        return ans;  
+    }
+        
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
